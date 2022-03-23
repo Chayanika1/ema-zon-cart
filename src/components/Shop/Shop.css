@@ -13,3 +13,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
 }
+.cart-container{
+    background-color: cadetblue;
+    text-align: center;
+}
