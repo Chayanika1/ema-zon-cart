@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Cart.css'
 
 const Cart = (props) => {
@@ -6,15 +7,16 @@ const Cart = (props) => {
     console.log(cart)
      let total = 0;
      let shipping = 0;
-     let allTotal = 0;
+     
      
      for( const all of cart){
          total = total + all.price;
          shipping = shipping + all.shipping;
         
-         allTotal=allTotal+ total+shipping;
+         
      }
-     const tax = (total*0.1).toFixed(2);
+     const tax =Number( (total*0.1).toFixed(2));
+     const allTotal=total+shipping+tax;
     return (
         <div className='cart'>
             <h4>Order Summary</h4>
@@ -23,6 +25,7 @@ const Cart = (props) => {
                 <p>shipping:${shipping}</p>
                 <p>Tax:${tax}</p>
                 <h1>Grand Total: ${allTotal}</h1>
+                
             
         </div>
     );
