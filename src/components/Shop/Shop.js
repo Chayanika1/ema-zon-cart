@@ -10,7 +10,7 @@ const Shop = () => {
     const [cart, setCart] = useState([]);
 
     useEffect( () =>{
-        fetch('products.json')
+        fetch('http://localhost:5000/service')
         .then(res=> res.json())
         .then(data => setProducts(data))
     }, []);
@@ -18,7 +18,7 @@ const Shop = () => {
         const storedCart = getStoredCart();
         const savedCart = [];
         for(const id in storedCart){
-            const addedProduct = products.find(product => product.id === id);
+            const addedProduct = products.find(product => product._id === id);
             if(addedProduct){
                 const quantity = storedCart[id];
                 addedProduct.quantity = quantity;
@@ -33,7 +33,7 @@ const Shop = () => {
         // do not do this: cart.push(product);
         const newCart = [...cart, product];
         setCart(newCart);
-        addToDb(product.id)
+        addToDb(product._id)
     }
 
     return (
@@ -41,7 +41,7 @@ const Shop = () => {
             <div className="products-container">
                 {
                     products.map(product=><Product 
-                        key={product.id}
+                        key={product._id}
                         product={product}
                         handleAddToCart={handleAddToCart}
                         ></Product>)

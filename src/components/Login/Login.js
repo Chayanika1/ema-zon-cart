@@ -20,7 +20,7 @@ const Login = () => {
         user,
         loading,
         error,
-      ] = useSignInWithEmailAndPassword(auth);
+      ] = useSignInWithEmailAndPassword(auth)
       const handleUserSignIn=(e)=>{
           e.preventDefault();
           signInWithEmailAndPassword(email,password)
